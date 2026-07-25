@@ -1,0 +1,51 @@
+service:
+
+  Internet: 0.45
+  Combo: 0.20
+  CTV: 0.12
+  OTT: 0.10
+  PSTN: 0.08
+  IoT: 0.05
+
+
+technology:
+
+  xPON: 0.40
+  FTTx: 0.20
+  WiFi: 0.15
+  xDSL: 0.10
+  TDM: 0.07
+  ISDN: 0.05
+  Legacy: 0.03
+
+
+degradation:
+
+  unavailable: 0.45
+  degraded: 0.35
+  quality: 0.20
+
+
+reason:
+
+  provider_outage: 0.35
+  cpe_problem: 0.20
+  provider_equipment: 0.18
+  subscriber_balance: 0.12
+  software_configuration: 0.08
+  third_party: 0.04
+  planned_changes: 0.03
+
+
+template:
+
+  T01: 0.25
+  T02: 0.18
+  T03: 0.15
+  T04: 0.10
+  T05: 0.10
+  T06: 0.08
+  T07: 0.06
+  T08: 0.05
+  T09: 0.02
+  T10: 0.01

@@ -1,0 +1,172 @@
+Internet:
+
+  xPON:
+    symptoms:
+      - no_connection
+      - no_auth
+      - session_drop
+      - no_dhcp
+
+    reasons:
+      - provider_outage
+      - provider_equipment
+      - cpe_problem
+      - software_configuration
+      - subscriber_balance
+
+
+  FTTx:
+    symptoms:
+      - no_connection
+      - session_drop
+      - no_dhcp
+
+    reasons:
+      - provider_outage
+      - provider_equipment
+      - cpe_problem
+
+
+  xDSL:
+    symptoms:
+      - no_connection
+      - session_drop
+      - no_auth
+
+    reasons:
+      - provider_outage
+      - cpe_problem
+      - provider_equipment
+
+
+  WiFi:
+    symptoms:
+      - no_connection
+      - no_dhcp
+      - application_failure
+
+    reasons:
+      - cpe_problem
+      - software_configuration
+
+
+  Legacy:
+    symptoms:
+      - no_connection
+
+    reasons:
+      - provider_equipment
+
+
+
+CTV:
+
+  xPON:
+    symptoms:
+      - no_connection
+      - application_failure
+
+    reasons:
+      - provider_outage
+      - provider_equipment
+      - cpe_problem
+
+
+  FTTx:
+    symptoms:
+      - no_connection
+      - application_failure
+
+    reasons:
+      - provider_outage
+      - cpe_problem
+
+
+  OTT:
+    symptoms:
+      - application_failure
+      - blocked_by_regulator
+
+    reasons:
+      - software_configuration
+      - third_party
+
+
+
+OTT:
+
+  Internet:
+    symptoms:
+      - application_failure
+      - blocked_by_regulator
+
+    reasons:
+      - software_configuration
+      - third_party
+
+
+  WiFi:
+    symptoms:
+      - application_failure
+
+    reasons:
+      - cpe_problem
+
+
+
+PSTN:
+
+  TDM:
+    symptoms:
+      - no_connection
+
+    reasons:
+      - provider_equipment
+      - provider_outage
+
+
+  ISDN:
+    symptoms:
+      - no_connection
+      - no_auth
+
+    reasons:
+      - provider_equipment
+
+
+
+IoT:
+
+  xPON:
+    symptoms:
+      - no_connection
+      - no_auth
+
+    reasons:
+      - provider_outage
+      - cpe_problem
+
+
+  WiFi:
+    symptoms:
+      - no_connection
+      - no_dhcp
+
+    reasons:
+      - cpe_problem
+      - software_configuration
+
+
+
+Combo:
+
+  xPON:
+    symptoms:
+      - no_connection
+      - application_failure
+      - session_drop
+
+    reasons:
+      - provider_outage
+      - provider_equipment
+      - cpe_problem

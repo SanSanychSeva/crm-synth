@@ -1,0 +1,17 @@
+no_connection:
+  title: нет соединения
+
+no_auth:
+  title: нет авторизации
+
+session_drop:
+  title: падает сессия
+
+application_failure:
+  title: не работают приложения
+
+no_dhcp:
+  title: нет DHCP
+
+blocked_by_regulator:
+  title: сайт запрещен регулятором

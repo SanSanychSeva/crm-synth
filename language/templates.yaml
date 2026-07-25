@@ -1,0 +1,48 @@
+T01:
+  weight: 25
+  text: "{SERVICE} {DEGRADATION}. Причина - {REASON}."
+
+
+T02:
+  weight: 18
+  text: "По услуге {SERVICE} {DEGRADATION}. Причина - {REASON}."
+
+
+T03:
+  weight: 15
+  text: "{SERVICE}. {SYMPTOM}. Причина - {REASON}."
+
+
+T04:
+  weight: 10
+  text: "{SERVICE} ({TECH}) {DEGRADATION}. Причина - {REASON}."
+
+
+T05:
+  weight: 10
+  text: "На {TECH} зарегистрировано: {SYMPTOM}. Причина - {REASON}."
+
+
+T06:
+  weight: 8
+  text: "{SERVICE}. {TECH}. {REASON}."
+
+
+T07:
+  weight: 6
+  text: "{SERVICE}. {TECH}. {SYMPTOM}."
+
+
+T08:
+  weight: 5
+  text: "{SYMPTOM}. Причина - {REASON}."
+
+
+T09:
+  weight: 2
+  text: "{SERVICE}. Причина - {REASON}."
+
+
+T10:
+  weight: 1
+  text: "{TECH}. {SYMPTOM}. {REASON}."

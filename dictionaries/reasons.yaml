@@ -1,0 +1,26 @@
+subscriber_balance:
+  title: нулевой баланс абонента
+
+
+provider_outage:
+  title: временная авария на стороне провайдера
+
+
+cpe_problem:
+  title: проблема абонентского оборудования
+
+
+provider_equipment:
+  title: проблема оборудования провайдера
+
+
+software_configuration:
+  title: неверная конфигурация ПО
+
+
+third_party:
+  title: воздействие третьей стороны
+
+
+planned_changes:
+  title: последствия плановых изменений на стороне провайдера

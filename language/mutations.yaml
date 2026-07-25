@@ -1,0 +1,41 @@
+punctuation:
+
+  dash:
+    probability: 0.10
+
+    variants:
+      - "-"
+      - ":"
+      - "—"
+
+
+remove_words:
+
+  probability: 0.03
+
+  variants:
+
+    - услуга
+    - сервис
+
+
+append_phrase:
+
+  probability: 0.05
+
+  variants:
+
+    - выполняется проверка
+    - передано специалистам
+    - выполняется локализация
+    - ожидается восстановление
+
+
+shortening:
+
+  probability: 0.05
+
+  variants:
+
+    - заменить "отсутствует" на "нет"
+    - удалить вводное слово

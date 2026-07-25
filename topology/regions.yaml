@@ -1,0 +1,42 @@
+region_1:
+
+  aliases:
+
+    Internet:
+      - Интернет
+
+    xPON:
+      - GPON
+
+    provider_outage:
+      - авария на стороне провайдера
+
+
+
+region_2:
+
+  aliases:
+
+    Internet:
+      - ШПД
+
+    xPON:
+      - xPON
+
+    provider_outage:
+      - авария сети
+
+
+
+region_3:
+
+  aliases:
+
+    Internet:
+      - доступ в Интернет
+
+    xPON:
+      - PON
+
+    provider_outage:
+      - авария оборудования
