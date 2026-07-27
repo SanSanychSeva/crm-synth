@@ -1,10 +1,13 @@
 class Corpus:
 
     def __init__(self, texts):
-        self.texts = list(texts)
+        self.documents = list(texts)
 
     def __len__(self):
-        return len(self.texts)
+        return len(self.documents)
 
     def __iter__(self):
-        return iter(self.texts)
+        return iter(self.documents)
+
+    def get(self, index):
+        return self.documents[index]
