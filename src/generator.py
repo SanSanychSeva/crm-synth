@@ -9,12 +9,14 @@ class CRMGenerator:
     Генератор синтетических CRM/NOC комментариев.
     """
 
-    def __init__(self, config_path="../", seed=None):
+    def __init__(self, config_path="../", seed=None, debug_flag=False):
 
         if seed is not None:
             random.seed(seed)
 
         self.base_path = Path(config_path)
+
+        self.run_debug = debug_flag
 
         self.services = self._load(
             "dictionaries/services.yaml"
@@ -32,8 +34,8 @@ class CRMGenerator:
             "dictionaries/reasons.yaml"
         )
 
-        self.degradation = self._load(
-            "dictionaries/degradation.yaml"
+        self.degradations = self._load(
+            "dictionaries/degradations.yaml"
         )
 
         self.compatibility = self._load(
@@ -59,7 +61,7 @@ class CRMGenerator:
         self.mutations = self._load(
             "language/mutations.yaml"
         )
-
+#-----------------------------------------------
 
     def _load(self, filename):
 
@@ -72,7 +74,7 @@ class CRMGenerator:
         ) as f:
 
             return yaml.safe_load(f)
-
+#-----------------------------------------------
 
 
     def _weighted_choice(self, data):
@@ -95,7 +97,7 @@ class CRMGenerator:
             weights=weights,
             k=1
         )[0]
-
+#-----------------------------------------------
 
 
     def _choose_service(self):
@@ -103,7 +105,7 @@ class CRMGenerator:
         return self._weighted_choice(
             self.probabilities["service"]
         )
-
+#-----------------------------------------------
 
 
     def _choose_technology(self):
@@ -111,7 +113,7 @@ class CRMGenerator:
         return self._weighted_choice(
             self.probabilities["technology"]
         )
-
+#-----------------------------------------------
 
 
     def _choose_degradation(self):
@@ -119,7 +121,7 @@ class CRMGenerator:
         return self._weighted_choice(
             self.probabilities["degradation"]
         )
-
+#-----------------------------------------------
 
 
     def _choose_template(self):
@@ -127,7 +129,7 @@ class CRMGenerator:
         return self._weighted_choice(
             self.probabilities["template"]
         )
-
+#-----------------------------------------------
 
 
     def _choose_region(self):
@@ -135,7 +137,7 @@ class CRMGenerator:
         return random.choice(
             list(self.regions.keys())
         )
-
+#-----------------------------------------------
 
 
     def _choose_scenario(self):
@@ -181,50 +183,56 @@ class CRMGenerator:
                 "symptom": symptom,
                 "reason": reason
             }
-
+#-----------------------------------------------
 
 
     def _alias(self, category, key, region=None):
 
-        """
-        Выбор текстового представления.
-        """
-
-        # региональный override
-
+        # 1. региональные варианты
         if region:
 
-            reg = self.regions.get(
-                region,
-                {}
-            )
+            reg = self.regions.get(region, {})
 
-            aliases = (
+            variants = (
                 reg
                 .get("aliases", {})
                 .get(key)
             )
 
-            if aliases:
-                return aliases
+            if variants:
+                return random.choice(variants)
 
 
+        # 2. обычные aliases
         variants = (
             self.aliases
             .get(category, {})
             .get(key)
         )
 
-
         if variants:
-            return random.choice(
-                variants
-            )
+            return random.choice(variants)
 
 
+        # 3. fallback на title
+        source = getattr(
+            self,
+            f"{category}s",
+            {}
+        )
+
+        item = source.get(key)
+
+        if isinstance(item, dict):
+            title = item.get("title")
+
+            if title:
+                return title
+
+
+        # 4. последний резерв
         return key
-
-
+#-----------------------------------------------
 
     def _apply_mutations(self, text):
 
@@ -241,7 +249,7 @@ class CRMGenerator:
                     ["variants"]
                 )
             )
-
+#-----------------------------------------------
 
         # добавление финальной фразы
 
@@ -255,10 +263,16 @@ class CRMGenerator:
 
             text += ". " + phrase
 
-
         return text
+#-----------------------------------------------
 
+    def _normalize_text(self, text):
 
+        while ".." in text:
+            text = text.replace("..", ".")
+
+        return text.strip()
+#-----------------------------------------------
 
     def generate_one(self):
 
@@ -273,7 +287,6 @@ class CRMGenerator:
         template = self.templates[
             template_id
         ]["text"]
-
 
         values = {
 
@@ -313,16 +326,15 @@ class CRMGenerator:
                 )
         }
 
-
         text = template.format(
             **values
         )
-
 
         text = self._apply_mutations(
             text
         )
 
+        text = self._normalize_text(text)
 
         return {
 
@@ -349,7 +361,7 @@ class CRMGenerator:
             "template":
                 template_id
         }
-
+#-----------------------------------------------
 
 
     def generate(
